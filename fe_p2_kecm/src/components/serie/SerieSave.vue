@@ -29,6 +29,13 @@ const dialogVisible = computed({
   },
 })
 
+const tiposClasificacion = ref([
+  { label: 'A', value: 'A' },
+  { label: 'B', value: 'B' },
+  { label: 'B15', value: 'B15' },
+  { label: 'X', value: 'X' },
+])
+
 // const pais = ref<Pais>({} as Pais)
 const serie = ref<Serie>({ ...props.serie })
 
@@ -61,6 +68,7 @@ async function handleSave() {
       director: serie.value.director,
       temporadas: serie.value.temporadas,
       fechaEstreno: fecha,
+      tipoClasificacion: serie.value.tipoClasificacion,
     }
     if (props.modoEdicion) {
       await http.patch(`${ENDPOINT}/${serie.value.id}`, body)
@@ -176,6 +184,18 @@ watch(
           mask="99/99/9999"
           class="flex-auto"
           autocomplete="off"
+        />
+      </div>
+      <div class="flex items-center gap-4 mb-4">
+        <label for="tipoClasificacion" class="font-semibold w-3">Tipo de Clasificación</label>
+        <Select
+          id="tipoClasificacion"
+          v-model="serie.tipoClasificacion"
+          :options="tiposClasificacion"
+          optionLabel="label"
+          optionValue="value"
+          placeholder="Seleccione una clasificación"
+          class="flex-auto"
         />
       </div>
       <div class="flex justify-end gap-2">

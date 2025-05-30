@@ -33,6 +33,9 @@ export class Serie {
   @Column('date', { name: 'fecha_estreno' })
   fechaEstreno: Date;
 
+  @Column('varchar', { length: 3, default: '', name: 'tipo_clasificacion' })
+  tipoClasificacion: string;
+
   @CreateDateColumn({ name: 'fecha_creacion' })
   fechaCreacion: Date;
 
@@ -42,7 +45,11 @@ export class Serie {
   @DeleteDateColumn({ name: 'fecha_eliminacion' })
   fechaEliminacion: Date;
 
-  @ManyToOne(() => Pais)
+  // @ManyToOne(() => Pais)
+  // @JoinColumn({ name: 'id_pais' })
+  // pais: Pais;
+
+  @ManyToOne(() => Pais, { nullable: true })
   @JoinColumn({ name: 'id_pais' })
-  pais: Pais;
+  pais?: Pais | null;
 }

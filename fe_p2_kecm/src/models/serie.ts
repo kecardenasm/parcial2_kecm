@@ -9,4 +9,5 @@ export interface Serie {
   temporadas: number
   fechaEstreno: string | Date
   pais: Pais
+  tipoClasificacion: string
 }

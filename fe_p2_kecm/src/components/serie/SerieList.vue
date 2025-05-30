@@ -71,6 +71,11 @@ defineExpose({ obtenerLista })
         <Column field="director" header="Director" style="min-width: 100px"></Column>
         <Column field="temporadas" header="Temporadas" style="min-width: 100px"></Column>
         <Column field="fechaEstreno" header="Fecha de Estreno" style="min-width: 100px"></Column>
+        <Column
+          field="tipoClasificacion"
+          header="Tipo de Clasificación"
+          style="min-width: 100px"
+        ></Column>
         <Column header="Acciones" frozen alignFrozen="right" style="min-width: 120px">
           <template #body="{ data }">
             <Button icon="pi pi-pencil" aria-label="Editar" text @click="emitirEdicion(data)" />
@@ -97,6 +102,7 @@ defineExpose({ obtenerLista })
           <th>Director</th>
           <th>Temporadas</th>
           <th>Fecha de Estreno</th>
+          <th>Tipo de Clasificación</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -109,6 +115,7 @@ defineExpose({ obtenerLista })
           <td>{{ serie.director }}</td>
           <td>{{ serie.temporadas }}</td>
           <td>{{ serie.fechaEstreno }}</td>
+          <td>{{ serie.tipoClasificacion }}</td>
           <td>
             <Button icon="pi pi-pencil" aria-label="Editar" text @click="emitirEdicion(serie)" />
             <Button
